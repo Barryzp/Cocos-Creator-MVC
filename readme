@@ -6,18 +6,9 @@ TODO:说明文档的编写
 
 
 TODOLIST:
-    1.11.5.注册完毕
-    2.Doing.功能实现，各类控件的自动绑定，都继承于UIControl
-    3.自动生成脚本,找到定制化脚本的方法了，不过这还不够，我们得自己创建我们想要的脚本，这里找到了
-    引擎中的C:\CocosCreator\resources\app.asar\editor\page\project-scripts.js这个文件，它是在app.asar中的，我们得想办法去打开这个文件.
-    TODO:https://jingyan.baidu.com/article/60ccbcebb2bb1264cab197b3.html
-
-    4.主要是哪些内容呢？
-        现在明白了怎么去创建文件和保存文件，但是还是有一个问题
-            ？文件的新建以及出错判断，保证稳定性（node.js）。
-            ？就是如何获取项目路径名称（为了简便服务的，这样我们就不需要每次都搞个全局路径，最好是在Assets目录下）。
-            ？让界面更加美观，需要清楚布局。
-
-            更快捷的操作方式：vue,html,css,
-
-        (1)
+    1.Done:uiControl注册在其顶层的contentControl其上，contentControl注册在UIManager其上。
+    2.Doing:功能实现，各类控件的自动绑定，都继承于UIControl。
+    3.Done:自动生成脚本,找到定制化脚本的方法了。通过编写插件的方式进行，已经完成编写。
+    4.HACK:关于插件的编写：
+        (1)虽然目前实现地较为粗糙，实现地较为粗暴，等到之后再慢慢优化，主要是不懂HTML和css这一块东西。
+        (2)TODO:在插件的contentControl代码生成方面易用性不够高，如果改变了目录生成代码，对于基类的import路径就不对。

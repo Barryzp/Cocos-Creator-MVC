@@ -1,3 +1,5 @@
+var a= require('')
+
 'use strict';
 module.exports={
     load(){},
