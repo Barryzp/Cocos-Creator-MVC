@@ -1,0 +1,19 @@
+{
+    "name": "code-generator",
+    "version": "0.0.1",
+    "description": "generate a contentControl extends BaseContentControl",
+    "author": "Barry",
+    "main": "main.js",
+    "main-menu": {
+      "CodeGenerator/open": {
+        "message": "code-generator:open"
+      }
+    },
+    "panel": {
+      "main": "panel/index.js",
+      "type": "dockable",
+      "title": "Code Generator",
+      "width": 200,
+      "height": 200
+    }
+  }
