@@ -1,11 +1,9 @@
-var a= require('')
-
 'use strict';
-module.exports={
-    load(){},
-    unload(){},
-    messages:{
-        'open'(){
+module.exports = {
+    load() { },
+    unload() { },
+    messages: {
+        'open'() {
             Editor.Panel.open('code-generator');
         },
         // 'create-code'(){

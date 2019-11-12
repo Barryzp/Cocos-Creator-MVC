@@ -53,6 +53,7 @@ export default abstract class BaseContentControl extends cc.Component {
             console.error(`registeControl fun:there is a repeat control named ${control.controlName} in ${this.contentName}!`);
         } else {
             this.uiControlMap.set(control.controlName, control);
+            control.contentControl=this;
         }
     }
 

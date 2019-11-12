@@ -13,8 +13,8 @@ Editor.Panel.extend({
 
   ready () {
     var self=this;
-    this.$contentinput.value = "Scripts/ContentControl/NewContentControl";
-    this.$normalinput.value = "Scripts/ContentControl/NewScript";
+    this.$contentinput.value = "NewContentControl";
+    this.$normalinput.value = "Scripts/NewScript";
     this.$btn.addEventListener('confirm', () => {
       this.createContentControl();
     });
@@ -31,49 +31,40 @@ Editor.Panel.extend({
   },
 
   createContentControl:function(){
-    let prjPath=Editor.Project.path+'';
-    let relativePath=this.$contentinput.value+'';
-    let paths=relativePath.split('/');
-    let filename=paths[paths.length-1];
-    prjPath =  prjPath.replace(/\\/g,"/");
+    let filename=this.$contentinput.value+'';
     let scirptContent=`
-    import BaseContentControl from "../Framework/BaseContentControl";
-    const {ccclass, property} = cc._decorator;
-    
-    @ccclass
-    export default class ${filename} extends BaseContentControl {
-    
-        /** 定义的相关绑定脚本
-        label:LabelBinder=null;
-        btn1Control:ButtonBinder=null;
+import BaseContentControl from "../Framework/BaseContentControl";
+const {ccclass, property} = cc._decorator;
+
+@ccclass
+export default class ${filename} extends BaseContentControl {
+
+    /** 定义的相关绑定脚本
+    label:LabelBinder=null;
+    btn1Control:ButtonBinder=null;
+    */
+    onLoad(){
+        super.onLoad();
+    }
+
+    start(){
+        super.start();
+
+        /*  初始化
+        this.btn1Control=this.findComponet("button1");
+        this.btn1Control.setClickHandler(this.helloWorld,this,"10");
         */
-        onLoad(){
-            super.onLoad();
-        }
-    
-        start(){
-            super.start();
+    }
 
-            /*  初始化
-            this.btn1Control=this.findComponet("button1");
-            this.btn1Control.setClickHandler(this.helloWorld,this,"10");
-            */
-        }
-    
-        /** 按钮事件的绑定
-        helloWorld(target,customData){
-            console.log("hello world."+customData)
-        }*/
-    }`;
+    /** 按钮事件的绑定
+    helloWorld(target,customData){
+        console.log("hello world."+customData)
+    }*/
+}`;
 
+    let relativePath="Scripts/ContentControl/"+filename;
     let scriptPath = `db://assets/${relativePath}`;
-    this.createScript(filename,scriptPath);
-    // if(Editor.assetdb.exists(scriptPath)){
-      //这个方法过时了，我去
-    //   Editor.error(`Script name ${filename} existed!`);
-    //   return;
-    // }
-
+    this.createScript(filename,scriptPath,scirptContent);
   },
 
   createNormalControl:function(){

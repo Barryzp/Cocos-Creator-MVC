@@ -1,5 +1,6 @@
 import { SECOND_EXCUTE } from "./Config";
 import UIManager from "../UIManager";
+import BaseContentControl from "./BaseContentControl";
 
 const { ccclass, property, executionOrder } = cc._decorator;
 
@@ -15,11 +16,12 @@ export default abstract class UIControl extends cc.Component {
     })
     controlName:string = "";
     @property({
-        tooltip: "内容名(每个content下面的这个名称不要一致)"
+        tooltip: "内容名(每个content下面的这个名称不要一致)，如果不填写默认会寻找其父节点"
     })
     contentName:string = "";
     //相应的组件
     component: any = null;
+    contentControl:BaseContentControl=null;
     onLoad() {
         this.register();
         console.log("UIControl");
@@ -30,10 +32,28 @@ export default abstract class UIControl extends cc.Component {
     }
 
     register() {
-        UIManager.instance.registerControl(this);
+        if(this.contentName==''){
+            let node = this.node;
+            while(true){
+                node=node.parent;
+                let contentControl=node.getComponent(BaseContentControl);
+                if(contentControl){
+                    contentControl.registeControl(this);
+                    return;
+                }
+
+                if(node==cc.Canvas.instance.node.parent){
+                    console.error(`cant find contentControl on the node named ${this.controlName} 's ancestor.`);
+                    return;
+                }
+            }
+        }else{
+            UIManager.instance.registerControl(this);
+        }
     }
 
     unRegister() {
-        UIManager.instance.unRegisterControl(this);
+        this.contentControl.unRegisteControl(this);
+        //UIManager.instance.unRegisterControl(this);
     }
 }

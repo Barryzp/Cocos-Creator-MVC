@@ -20,7 +20,7 @@ module.exports = {
       Editor.Ipc.sendToPanel('hello-world', 'hello-world:hello');
     },
     'clicked' () {
-      Editor.log('Button clicked!');
+      Editor.log('Button clicked!--');
       Editor.log(__dirname);
       //Editor.error(__dirname);
     }
