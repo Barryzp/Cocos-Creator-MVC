@@ -1,13 +1,22 @@
 import BaseContentControl from "./Framework/BaseContentControl";
 import ButtonBinder from "./Framework/ButtonBinder";
 import LabelBinder from "./Framework/LabelBinder";
+import PanelManager, { PanelName } from "./PanelManager";
 
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class GameContentControl extends BaseContentControl {
 
-    label:LabelBinder=null;
+    private _score: number = 0;
+    public get score(): number {
+        return this._score;
+    }
+    public set score(value: number) {
+        this._score = value;
+        this.setProperty("score");
+    }
+
     btn1Control:ButtonBinder=null;
     onLoad(){
         super.onLoad();
@@ -16,8 +25,8 @@ export default class GameContentControl extends BaseContentControl {
     start(){
         super.start();
 
-        this.btn1Control=this.findComponet("button1");
-        this.btn1Control.setClickHandler(this.helloWorld,this,"10");
+        PanelManager.instance.showPanel(PanelName.testContent);
+        PanelManager.instance.closePanel(PanelName.gameContent);
     }
 
     helloWorld(target,customData){

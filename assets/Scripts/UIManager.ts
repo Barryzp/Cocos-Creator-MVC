@@ -1,5 +1,6 @@
 import BaseContentControl from "./Framework/BaseContentControl";
 import UIControl from "./Framework/UIControl";
+import { LogInfo, LogError } from "./Framework/Config";
 const { ccclass, property } = cc._decorator;
 
 @ccclass
@@ -14,7 +15,7 @@ export default class UIManager extends cc.Component {
         UIManager._instance = this;
         cc.game.addPersistRootNode(this.node);
 
-        console.log("UIManager");
+        LogInfo("UIManager");
     }
 
     start() {
@@ -27,7 +28,7 @@ export default class UIManager extends cc.Component {
 
     registeContent(contentName: string, contentControl: BaseContentControl) {
         if (this.contentMap.has(contentName)) {
-            console.error(`registeContent fun:there is a repeat content named ${contentName} in UIManager!`);
+            LogError(`registeContent fun:there is a repeat content named ${contentName} in UIManager!`);
         } else {
             this.contentMap.set(contentName, contentControl);
         }
@@ -37,9 +38,9 @@ export default class UIManager extends cc.Component {
         let contentName = contentControl.contentName;
         if (this.contentMap.has(contentName)) {
             this.contentMap.delete(contentName);
-            console.log(`${contentName} content unRegisted successed.`)
+            LogInfo(`${contentName} content unRegisted successed.`)
         } else {
-            console.error(`unRegisteContent fun:no content named ${contentName}  in UIManager!`);
+            LogError(`unRegisteContent fun:no content named ${contentName}  in UIManager!`);
         }
     }
 
@@ -48,12 +49,12 @@ export default class UIManager extends cc.Component {
         let contentControl = this.contentMap.get(contentName);
         if (contentControl) {
             if (contentControl.uiControlMap.has(contentName)) {
-                console.error(`registerControl fun:control named ${control.controlName} repeated in ${contentName}!`);
+                LogError(`registerControl fun:control named ${control.controlName} repeated in ${contentName}!`);
             } else {
                 contentControl.registeControl(control);
             }
         } else {
-            console.error(`registerControl fun:there isnt a content named ${contentName} in ${contentName}!`);
+            LogError(`registerControl fun:there isnt a content named ${contentName} in ${contentName}!`);
         }
     }
 
@@ -63,7 +64,7 @@ export default class UIManager extends cc.Component {
         if (contentControl) {
             contentControl.unRegisteControl(control);
         } else {
-            console.error(`unRegisterControl fun:no control named ${contentName} in ${control.controlName}!`);
+            LogError(`unRegisterControl fun:no control named ${contentName} in ${control.controlName}!`);
         }
     }
 }

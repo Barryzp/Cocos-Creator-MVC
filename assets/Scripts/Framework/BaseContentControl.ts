@@ -1,5 +1,5 @@
 import UIControl from "./UIControl";
-import { FIRST_EXCUTE } from "./Config";
+import { FIRST_EXCUTE, LogError, LogInfo } from "./Config";
 import UIManager from "../UIManager";
 
 const { ccclass, property, executionOrder } = cc._decorator;
@@ -16,7 +16,7 @@ export default abstract class BaseContentControl extends cc.Component {
 
     onLoad() {
         UIManager.instance.registeContent(this.contentName, this);
-        console.log("BaseContentControl");
+        LogInfo("BaseContentControl");
     }
 
     start() {
@@ -38,7 +38,7 @@ export default abstract class BaseContentControl extends cc.Component {
     findComponet(controlName:string):any{
         let control=this.uiControlMap.get(controlName);
         if(!control){
-            console.error(`FindComponet fun:there isnt a control named ${controlName} in ${this.contentName}`);
+            LogError(`FindComponet fun:there isnt a control named ${controlName} in ${this.contentName}`);
             return ;
         }
 
@@ -50,7 +50,7 @@ export default abstract class BaseContentControl extends cc.Component {
      */
     registeControl(control: UIControl) {
         if (this.uiControlMap.has(control.controlName)) {
-            console.error(`registeControl fun:there is a repeat control named ${control.controlName} in ${this.contentName}!`);
+            LogError(`registeControl fun:there is a repeat control named ${control.controlName} in ${this.contentName}!`);
         } else {
             this.uiControlMap.set(control.controlName, control);
             control.contentControl=this;
@@ -63,13 +63,23 @@ export default abstract class BaseContentControl extends cc.Component {
     unRegisteControl(control: UIControl) {
         if (this.uiControlMap.has(control.controlName)) {
             this.uiControlMap.delete(control.controlName);
-            console.log(`${control.controlName} control unRegisted successed.`)
+            LogInfo(`${control.controlName} control unRegisted successed.`)
         } else {
-            console.error(`unRegisteControl fun:there isnt a control named ${control.controlName} in ${this.contentName}!`);
+            LogError(`unRegisteControl fun:there isnt a control named ${control.controlName} in ${this.contentName}!`);
         }
     }
 
+    //TODO:用于监听对象值的改变
+    protected setProperty(propertyName:string){
+        let value=this[propertyName];
+        if(value===undefined||value===null){
+            LogError(`there is no a property named ${propertyName} in ${this.contentName}!`);
+            return;
+        }
 
+        let control = this.findComponet(propertyName);
+        control.setValue&&control.setValue(value);
+    }
 
     //TODO:需要测试销毁这个地方，可能会出现问题
     onDestroy() {

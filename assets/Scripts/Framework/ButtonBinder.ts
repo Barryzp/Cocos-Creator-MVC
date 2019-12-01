@@ -1,4 +1,5 @@
 import UIControl from "./UIControl";
+import { LogError } from "./Config";
 const { ccclass, property, requireComponent } = cc._decorator;
 
 @ccclass
@@ -14,7 +15,7 @@ export default class ButtonBinder extends UIControl {
         super.onLoad();
         this.component = this.getComponent(cc.Button);
         if (!this.component) {
-            console.error(`ButtonBinder:no button component at the node ${this.node.name}`);
+            LogError(`ButtonBinder:no button component at the node ${this.node.name}`);
         }
     }
 

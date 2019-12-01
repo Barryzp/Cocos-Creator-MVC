@@ -73,12 +73,24 @@ export default class ${filename} extends BaseContentControl {
     let filename=paths[paths.length-1];
     let scriptPath = `db://assets/${relativePath}`;
     let scirptContent=
-`const {ccclass, property} = cc._decorator;
+`
+const {ccclass, property} = cc._decorator;
+
 @ccclass
 export default class ${filename} extends cc.Component {
-  onLoad() { }
-  start() { }
-  update(dt) { }
+  
+  onLoad() { 
+
+  }
+
+  start() { 
+
+  }
+
+  update(dt) { 
+
+  }
+  
 }`;
     this.createScript(filename,scriptPath,scirptContent);
   },
