@@ -162,7 +162,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 608.7146008584025
+      "z": 599.1139049116883
     },
     "_scale": {
       "__type__": "cc.Vec3",
@@ -1344,7 +1344,7 @@
     },
     "_enabled": true,
     "controlName": "button1",
-    "contentName": "GameContent2",
+    "contentName": "TestContent",
     "addMoreListener": true,
     "_id": "4fbbPwBiFPWbH50rVudpVM"
   },

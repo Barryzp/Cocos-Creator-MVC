@@ -18,7 +18,7 @@ export default class LabelBinder extends UIControl {
 
     //HACK:对于LabelBinder,ProgressBinder,这个部分应该是相同的,可以再抽象抽象
     start(){
-        let value=this.contentControl[this.contentName];
+        let value=this.contentControl[this.controlName];
         if(isAValue(value))this.setValue(value);
     }
 

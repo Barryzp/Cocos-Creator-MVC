@@ -12,6 +12,6 @@ export const LogError=(str:string)=>{
     console.error(LOG_ERROR+str);
 };
 
-export const isAValue=(value)=>boolean=>{
+export const isAValue=function(value):boolean{
     return value!=null&&value!=undefined;
 }
