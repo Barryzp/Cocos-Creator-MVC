@@ -1,4 +1,4 @@
-import { SECOND_EXCUTE, LogError } from "./Config";
+import { SECOND_EXCUTE, LogError, isAValue, LogInfo } from "./Config";
 import UIManager from "../UIManager";
 import BaseContentControl from "./BaseContentControl";
 
@@ -24,7 +24,17 @@ export default abstract class UIControl extends cc.Component {
     contentControl: BaseContentControl = null;
     onLoad() {
         this.register();
-        console.log("UIControl");
+        LogInfo("UIControl");
+    }
+
+    start() {
+        console.log(this.controlName);
+        //HACK:对于LabelBinder,ProgressBinder,这个部分应该是相同的,可以再抽象抽象
+        let value = this.contentControl[this.controlName];
+        if (isAValue(value)) this.setValue(value);
+    }
+
+    setValue(value:any){
     }
 
     onDestroy() {

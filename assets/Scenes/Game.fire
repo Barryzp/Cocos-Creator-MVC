@@ -71,14 +71,14 @@
         "__id__": 22
       },
       {
-        "__id__": 36
+        "__id__": 37
       }
     ],
     "_active": true,
     "_level": 0,
     "_components": [
       {
-        "__id__": 38
+        "__id__": 39
       }
     ],
     "_prefab": null,
@@ -162,7 +162,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 599.1139049116883
+      "z": 607.949833456676
     },
     "_scale": {
       "__type__": "cc.Vec3",
@@ -746,7 +746,6 @@
     "_enabled": true,
     "controlName": "button1",
     "contentName": "GameContent",
-    "addMoreListener": true,
     "_id": "27q8QU/X1LXIqdpkzO8wBx"
   },
   {
@@ -925,14 +924,14 @@
         "__id__": 32
       }
     ],
-    "_active": false,
+    "_active": true,
     "_level": 1,
     "_components": [
       {
-        "__id__": 34
+        "__id__": 35
       },
       {
-        "__id__": 35
+        "__id__": 36
       }
     ],
     "_prefab": null,
@@ -1128,7 +1127,7 @@
     "_position": {
       "__type__": "cc.Vec3",
       "x": 337,
-      "y": 31,
+      "y": -59.896,
       "z": 0
     },
     "_scale": {
@@ -1221,8 +1220,8 @@
       }
     ],
     "_useOriginalSize": false,
-    "_string": "一个按钮",
-    "_N$string": "一个按钮",
+    "_string": "二个按钮",
+    "_N$string": "二个按钮",
     "_fontSize": 25,
     "_lineHeight": 40,
     "_enableWrapText": true,
@@ -1345,7 +1344,6 @@
     "_enabled": true,
     "controlName": "button1",
     "contentName": "TestContent",
-    "addMoreListener": true,
     "_id": "4fbbPwBiFPWbH50rVudpVM"
   },
   {
@@ -1361,6 +1359,9 @@
     "_components": [
       {
         "__id__": 33
+      },
+      {
+        "__id__": 34
       }
     ],
     "_prefab": null,
@@ -1437,6 +1438,18 @@
     "_id": "4cxfGwoxNPW7b0bgciCkRr"
   },
   {
+    "__type__": "bb9dcX8PP9GaY0Jsr9SWlsU",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 32
+    },
+    "_enabled": true,
+    "controlName": "test2",
+    "contentName": "TestContent",
+    "_id": "41MqwC31VCx7+NsYu9w2eb"
+  },
+  {
     "__type__": "cc.Widget",
     "_name": "",
     "_objFlags": 0,
@@ -1486,7 +1499,7 @@
     "_level": 1,
     "_components": [
       {
-        "__id__": 37
+        "__id__": 38
       }
     ],
     "_prefab": null,
@@ -1537,7 +1550,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 36
+      "__id__": 37
     },
     "_enabled": true,
     "panelList": [

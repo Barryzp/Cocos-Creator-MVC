@@ -19,10 +19,6 @@ export default abstract class BaseContentControl extends cc.Component {
         LogInfo("BaseContentControl");
     }
 
-    start() {
-
-    }
-
     show() {
         this.node.active = true;
 
@@ -73,7 +69,7 @@ export default abstract class BaseContentControl extends cc.Component {
     protected setProperty(propertyName:string){
         let value=this[propertyName];
         if(value===undefined||value===null){
-            LogError(`there is no a property named ${propertyName} in ${this.contentName}!`);
+            LogError(`there isnt a property named ${propertyName} in ${this.contentName}!`);
             return;
         }
 

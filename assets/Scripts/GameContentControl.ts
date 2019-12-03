@@ -1,6 +1,4 @@
 import BaseContentControl from "./Framework/BaseContentControl";
-import ButtonBinder from "./Framework/ButtonBinder";
-import LabelBinder from "./Framework/LabelBinder";
 import PanelManager, { PanelName } from "./PanelManager";
 
 const {ccclass, property} = cc._decorator;
@@ -17,13 +15,16 @@ export default class GameContentControl extends BaseContentControl {
         this.setProperty("score");
     }
 
-    btn1Control:ButtonBinder=null;
+    button1:Function=null;
+
     onLoad(){
         super.onLoad();
     }
 
     start(){
-        super.start();
+        this.button1=()=>{
+            console.log("hello btn click event.");
+        }
 
         PanelManager.instance.showPanel(PanelName.testContent);
         PanelManager.instance.closePanel(PanelName.gameContent);

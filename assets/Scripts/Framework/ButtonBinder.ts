@@ -2,21 +2,33 @@ import UIControl from "./UIControl";
 import { LogError } from "./Config";
 const { ccclass, property, requireComponent } = cc._decorator;
 
+export interface ICommand{
+    action:Function;    
+}
+
+
 @ccclass
 @requireComponent(cc.Button)
 export default class ButtonBinder extends UIControl {
+
     component: cc.Button = null;
 
-    @property({ tooltip: "是否可以添加多个点击事件" })
+    //#region Deplicate
+    // @property({ tooltip: "是否可以添加多个点击事件" })
     addMoreListener = true;
     handlers: Function[] = [];
     handlerTargets: any[] = [];
+    //#region 
     onLoad() {
         super.onLoad();
         this.component = this.getComponent(cc.Button);
         if (!this.component) {
             LogError(`ButtonBinder:no button component at the node ${this.node.name}`);
         }
+    }
+
+    setValue(value:Function){
+        this.setClickHandler(value);
     }
 
     /**
