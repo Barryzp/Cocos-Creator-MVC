@@ -26,8 +26,8 @@ export default class GameContentControl extends BaseContentControl {
             console.log("hello btn click event.");
         }
 
-        PanelManager.instance.showPanel(PanelName.testContent);
-        PanelManager.instance.closePanel(PanelName.gameContent);
+        // PanelManager.instance.showPanel(PanelName.testContent);
+        // PanelManager.instance.closePanel(PanelName.gameContent);
     }
 
     helloWorld(target,customData){

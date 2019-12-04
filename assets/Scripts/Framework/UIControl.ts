@@ -1,15 +1,18 @@
-import { SECOND_EXCUTE, LogError, isAValue, LogInfo } from "./Config";
+import { LogError, isAValue, LogInfo, NORMAL_EXCUTE } from "./Config";
 import UIManager from "../UIManager";
 import BaseContentControl from "./BaseContentControl";
 
-const { ccclass, property, executionOrder } = cc._decorator;
+const { ccclass, property, executionOrder ,disallowMultiple} = cc._decorator;
 
 /**
  * 注意不要和ContentControl同级，即使同级，也要放在PanelControl下面
+ * 对于UIControl，得延迟初始化，因为我们不需要直接使用这个脚本了，
+ * 我们需要等contentControl这些重要组件都初始化完毕然后以及普通脚本都初始化完毕再做此脚本的初始化
  */
 
 @ccclass
-@executionOrder(SECOND_EXCUTE)
+@disallowMultiple()
+@executionOrder(NORMAL_EXCUTE)
 export default abstract class UIControl extends cc.Component {
     @property({
         tooltip: "控件名(每个content下面的这个名称不要一致)"

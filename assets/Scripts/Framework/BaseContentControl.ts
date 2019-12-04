@@ -2,9 +2,10 @@ import UIControl from "./UIControl";
 import { FIRST_EXCUTE, LogError, LogInfo } from "./Config";
 import UIManager from "../UIManager";
 
-const { ccclass, property, executionOrder } = cc._decorator;
+const { ccclass, property, executionOrder ,disallowMultiple} = cc._decorator;
 
 @ccclass
+@disallowMultiple()
 @executionOrder(FIRST_EXCUTE)
 export default abstract class BaseContentControl extends cc.Component {
     @property({
