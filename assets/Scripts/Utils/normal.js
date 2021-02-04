@@ -10,5 +10,5 @@ Array.prototype.contain=function(t){
 
 Array.prototype.remove=function(t){
     let id = this.indexOf(t);
-    id>=0?this.splice(id,1):null;
+    return id>=0?this.splice(id,1):null;
 }
